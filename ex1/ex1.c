@@ -8,7 +8,25 @@
 
 int main(void)
 {
-    // Your code here
+    int x = 100;
+    int pid = fork();
+    if (pid < 0)
+    {
+        fprintf(stderr, "Fork Failed\n");
+        exit(1);
+    }
+    if (pid == 0)
+    {
+        printf("Parent!\n");
+        x++;
+    }
+    else
+    {
+        printf("Child!\n");
+        x--;
+    }
+
+    printf("%d, %s, %d\n", pid, "hello", x);
 
     return 0;
 }
